@@ -14,7 +14,6 @@
     <td>Action</td>
 </tr>
 <?php	
-
 if(mysql_num_rows($a)>0){
     while($row= mysql_fetch_array($a)){ ?>
     <tr>

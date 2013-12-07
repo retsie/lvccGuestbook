@@ -6,10 +6,11 @@ $messages = MessageDAO::getAllMessages();
 
 ?>
 <html>
-	<head><center>GuestBook</center></head>
+	 <?php include'include/header.php'; ?>
 	<title><h1>GuestBook</h1></title><br>
 	
 <body>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css"><center>
 	 
 	<div>

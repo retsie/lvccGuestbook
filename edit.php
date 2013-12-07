@@ -1,13 +1,15 @@
 <?php
 require_once('include/config.php');
-$editMessage = new Message($config);
-$editMessage = MessageDAO::editMessage($_GET['id']);
+$MessageDAO = new MessageDAO();
 
-$is_approved= ($_POST['approved'])?$_POST['approved']:'';
-$id = ($_POST['id'])?$_POST['id']:'';
-if($editMessage){
 
-    echo "<script>alert('Record successfuly updated.');window.location.href='view.php';</script>";
-    }
-	
+if(isset($_POST)) {	
+		$a = $MessageDAO->editMessage($_POST);
+		if($a){
+			echo "<script>alert('Record successfuly saved.');window.location.href='view.php';</script>";
+		}else{
+			echo "<script>alert('Saving failed.');window.location.href='view.php'</script>";
+		}
+	}
+
 ?>

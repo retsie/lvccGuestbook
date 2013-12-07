@@ -5,12 +5,12 @@
 * Message class for the Guestbook
 */
 class Message {
-    private $_id;
-    private $_name;
-    private $_message;
-    private $_email;
-    private $_date_posted;
-    private $_is_approved;
+    public $_id;
+    public $_name;
+    public $_message;
+    public $_email;
+    public $_date_posted;
+    public $_is_approved;
 
     /**
 * @param Array
