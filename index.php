@@ -2,23 +2,58 @@
 require_once('include/config.php');
 
 $message = new Message($config);
-$messages = MessageDAO::getAllMessages();
+$MessageDAO = new MessageDAO();
+$a = $MessageDAO->getAllMessages($_POST);
 
 ?>
 <html>
 	 <?php include'include/header.php'; ?>
-	<title><h1>GuestBook</h1></title><br>
+	 <head><link rel="stylesheet" type="text/css" href="include/style.css"></head>
+	<title></title><br>
 	
 <body>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="style.css"><center>
-	 
-	<div>
-		<div>
+	
+	<div class = "body">
+	<div class = "div2">
+			<table border = "1" class = "tab">
+				<tr>
+					<td width = "250px">Name</td>
+					<td width = "400px">Message</td>
+					<td width = "100px">Date</td>
+   
+				</tr>
+				<?php
+
+if(mysql_num_rows($a)>0){
+    while($row= mysql_fetch_array($a)){
+		if($row['is_approved'] == "y"){ ?>
+    <tr>
+        <td><?=$row['name']?></td>
+        <td><?=$row['message']?></td>
+        <td><?=$row['date_posted']?></td>
+    </tr>
+<?php       
+     
+       
+}
+
+else{
+   
+    continue;
+}
+}
+}
+
+
+?>
+
+</table>
+		</div>
+		<div class = "div1">
 		<form  name = "messages" action="add.php" method="post">
-		Fullname: <input type="text" name="name"><br>
-		message: <input type="text" name="message"><br>
-		Email:	 <input type="text" name="email"><br>
+		Fullname: <input type="text" name="name"><br><br>
+		 Message:<textarea type="text" name="message"  rows="6" cols= "30" style="resize:none">message:</textarea><br><br>
+		Email:	 <input type="text" name="email"><br><br>
 				 <input type="submit" value="Submit" onclick = "return validate()">
 				 <input type="reset" value="Reset">
 		</form>   

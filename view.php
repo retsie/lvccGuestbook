@@ -4,11 +4,12 @@
 	$a = $MessageDAO->getAllMessages($_POST);
 	
 ?>
-<table border="1">
+<?php include'include/header.php'; ?>
+<table>
 <tr>
-    <td>Name</td>
-    <td>message</td>
-    <td>email</td>
+    <td width = "28%">Name</td>
+    <td width = "20%">message</td>
+    <td width = "28%">email</td>
     <td>Date Posted</td>
     <td>Status</td>
     <td>Action</td>
@@ -25,13 +26,13 @@ if(mysql_num_rows($a)>0){
         
         <td><a href="update.php?id=<?=$row['id']?>">
         <? if($row['is_approved'] == "y"){
-			print_r ("Reject");
+			print_r ("[Reject]");
 			}
 		   else{
-			print_r ("Approved");
+			print_r ("[Approved]");
 			}
 		?>
-		</a>&nbsp;<a href="delete.php?id=<?=$row['id']?>">[Delete]</a></td>
+		<div class = "action"></a>&nbsp;<a href="delete.php?id=<?=$row['id']?>">[Delete]</a></div></td>
     </tr>
 <?php       
        
